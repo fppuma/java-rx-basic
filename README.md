@@ -14,6 +14,12 @@ MapMain (length of each element) Console Output
 22:37:22.777 [main] INFO org.example.rxbasic.MapMain - 5
 ```
 
+FilterMain (length greater than 5)
+```
+23:47:35.705 [main] INFO org.example.rxbasic.FilterMain - 10
+23:47:35.709 [main] INFO org.example.rxbasic.FilterMain - 6
+```
+
 IntervalMain (interval with 5sec of sleep) Console Output
 ```
 23:05:15.145 [main] INFO org.example.rxbasic.IntervalMain - Start interval
