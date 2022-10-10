@@ -24,3 +24,12 @@ IntervalMain (interval with 5sec of sleep) Console Output
 23:05:20.281 [RxComputationThreadPool-1] INFO org.example.rxbasic.IntervalMain - 4
 23:05:20.297 [main] INFO org.example.rxbasic.IntervalMain - End interval
 ```
+
+# rx-observable
+
+ObservableCreator (Observable.create) Console Output
+```
+23:32:03.256 [main] INFO org.example.rxobservable.ObservableCreator - item: strawberry
+23:32:03.263 [main] INFO org.example.rxobservable.ObservableCreator - item: orange
+23:32:03.263 [main] INFO org.example.rxobservable.ObservableCreator - item: apple
+```
