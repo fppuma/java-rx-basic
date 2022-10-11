@@ -54,3 +54,9 @@ java.lang.StringIndexOutOfBoundsException: String index out of range: -2
 	at io.reactivex.rxjava3.core.Observable.subscribe(Observable.java:13082)
 	at org.example.rxobservable.OnNextAndOnError.main(OnNextAndOnError.java:26)
 ```
+
+FromIterableMain
+```
+23:04:40.276 [main] INFO org.example.rxobservable.FromIterableMain - STRAWBERRY
+23:04:40.279 [main] INFO org.example.rxobservable.FromIterableMain - ORANGE
+```
