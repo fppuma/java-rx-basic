@@ -39,3 +39,18 @@ ObservableCreator (Observable.create) Console Output
 23:32:03.263 [main] INFO org.example.rxobservable.ObservableCreator - item: orange
 23:32:03.263 [main] INFO org.example.rxobservable.ObservableCreator - item: apple
 ```
+
+OnNextAndOnError
+```
+22:49:58.896 [main] INFO org.example.rxobservable.OnNextAndOnError - item: strawberry
+22:49:58.900 [main] INFO org.example.rxobservable.OnNextAndOnError - item: orange
+22:49:58.905 [main] ERROR org.example.rxobservable.OnNextAndOnError - exception:
+java.lang.StringIndexOutOfBoundsException: String index out of range: -2
+	at java.base/java.lang.String.substring(String.java:1841)
+	at org.example.rxobservable.OnNextAndOnError.lambda$0(OnNextAndOnError.java:17)
+	at io.reactivex.rxjava3.internal.operators.observable.ObservableCreate.subscribeActual(ObservableCreate.java:41)
+	at io.reactivex.rxjava3.core.Observable.subscribe(Observable.java:13173)
+	at io.reactivex.rxjava3.core.Observable.subscribe(Observable.java:13118)
+	at io.reactivex.rxjava3.core.Observable.subscribe(Observable.java:13082)
+	at org.example.rxobservable.OnNextAndOnError.main(OnNextAndOnError.java:26)
+```
