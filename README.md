@@ -61,7 +61,7 @@ FromIterableMain
 23:04:40.279 [main] INFO org.example.rxobservable.FromIterableMain - ORANGE
 ```
 
-#rx-observer
+# rx-observer
 
 ObserverMain
 ```
