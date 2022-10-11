@@ -60,3 +60,13 @@ FromIterableMain
 23:04:40.276 [main] INFO org.example.rxobservable.FromIterableMain - STRAWBERRY
 23:04:40.279 [main] INFO org.example.rxobservable.FromIterableMain - ORANGE
 ```
+
+#rx-observer
+
+ObserverMain
+```
+23:34:45.334 [main] INFO org.example.rxobserver.ObserverInteger - item: 10
+23:34:45.339 [main] INFO org.example.rxobserver.ObserverInteger - item: 6
+23:34:45.339 [main] INFO org.example.rxobserver.ObserverInteger - item: 5
+23:34:45.339 [main] INFO org.example.rxobserver.ObserverInteger - ..done!
+```
