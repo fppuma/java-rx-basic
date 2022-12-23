@@ -1,7 +1,9 @@
 # rx-basic
 
 Main Console Output
-:strawberry:
+
+:strawberry: :orange: :orange:
+
 
 ```
 22:27:12.496 [main] INFO org.example.rxbasic.Main - strawberry
