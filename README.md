@@ -2,7 +2,7 @@
 
 Main Console Output
 
-:strawberry: :orange: :orange:
+:strawberry: :orange: :green_apple:
 
 
 ```
