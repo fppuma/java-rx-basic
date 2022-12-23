@@ -152,6 +152,7 @@ observable
 
 [ObserverMain](src/main/java/org/example/rxobserver/ObserverMain.java)  
 [ObserverInteger](src/main/java/org/example/rxobserver/ObserverInteger.java) This is an observer :eyes:
+
 ```java
 Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
     
