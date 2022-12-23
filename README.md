@@ -33,13 +33,36 @@ Console Output
 22:37:22.777 [main] INFO org.example.rxbasic.MapMain - 5
 ```
 
-FilterMain (length greater than 5)
+[FilterMain.java](src\main\java\org\example\rxbasic\FilterMain.java)  
+Filter: length greater than 5.
+```java
+Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
+    
+  fruits
+    .map(String::length)
+    .filter(length -> length > 5)
+    .subscribe(length -> logger.info("{}", length));
+
+```
+
+Console Output
 ```
 23:47:35.705 [main] INFO org.example.rxbasic.FilterMain - 10
 23:47:35.709 [main] INFO org.example.rxbasic.FilterMain - 6
 ```
 
-IntervalMain (interval with 5sec of sleep) Console Output
+[IntervalMain.java](src\main\java\org\example\rxbasic\IntervalMain.java) 
+Interval with 5 sec of sleep. 
+```java
+logger.info("Start interval");
+    
+Observable<Long> numbers = Observable.interval(1, TimeUnit.SECONDS);
+numbers.subscribe(n -> logger.info("{}", n));
+   
+SleepUtils.sleep(5000);  
+logger.info("End interval");
+```
+Console Output
 ```
 23:05:15.145 [main] INFO org.example.rxbasic.IntervalMain - Start interval
 23:05:16.297 [RxComputationThreadPool-1] INFO org.example.rxbasic.IntervalMain - 0
