@@ -93,7 +93,29 @@ Console Output
 23:32:03.263 [main] INFO org.example.rxobservable.ObservableCreator - item: apple
 ```
 
-OnNextAndOnError
+
+[OnNextAndOnError.java](src/main/java/org/example/rxobservable/OnNextAndOnError.java)  
+:strawberry: :orange: :green_apple: :x: :peach: 
+```java
+Observable<String> fruits = Observable.create(source -> {
+  try {
+    source.onNext("strawberry");
+    source.onNext("orange");
+    source.onNext("apple".substring(7));
+    source.onNext("peach");
+    source.onComplete();
+  } catch (Exception e) {
+    source.onError(e);
+  }
+     
+});
+    
+fruits.subscribe(
+  f -> logger.info("item: {}", f),
+  e -> logger.error("exception:", e)
+);
+```
+
 ```
 22:49:58.896 [main] INFO org.example.rxobservable.OnNextAndOnError - item: strawberry
 22:49:58.900 [main] INFO org.example.rxobservable.OnNextAndOnError - item: orange
