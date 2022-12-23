@@ -9,7 +9,7 @@ Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
 fruits.subscribe(logger::info);
 ```
 
-Main Console Output
+Console Output
 
 ```
 22:27:12.496 [main] INFO org.example.rxbasic.Main - strawberry
@@ -17,7 +17,16 @@ Main Console Output
 22:27:12.500 [main] INFO org.example.rxbasic.Main - apple
 ```
 
-MapMain (length of each element) Console Output
+[MapMain.java](src\main\java\org\example\rxbasic\MapMain.java)   
+Length of each element.  
+```java
+Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
+    
+fruits
+  .map(String::length)
+  .subscribe(length -> logger.info("{}", length));
+```
+Console Output
 ```
 22:37:22.771 [main] INFO org.example.rxbasic.MapMain - 10
 22:37:22.777 [main] INFO org.example.rxbasic.MapMain - 6
