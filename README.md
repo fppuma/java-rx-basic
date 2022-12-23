@@ -131,7 +131,7 @@ java.lang.StringIndexOutOfBoundsException: String index out of range: -2
 ```
 
 FromIterableMain
-[FromIterableMain.java](src/main/java/org/example/rxobservable/FromIterableMain.java) 
+[FromIterableMain.java](src/main/java/org/example/rxobservable/FromIterableMain.java)  
 Observable.fromIterable
 ```java
 List<String> fruits = List.of("strawberry", "orange", "apple");
