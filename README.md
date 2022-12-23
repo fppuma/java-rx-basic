@@ -17,7 +17,7 @@ Console Output
 22:27:12.500 [main] INFO org.example.rxbasic.Main - apple
 ```
 
-[MapMain.java](src\main\java\org\example\rxbasic\MapMain.java)   
+[MapMain.java](src\main\java\org\example\rxbasic\MapMain.java) 
 Length of each element.  
 ```java
 Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
@@ -33,7 +33,7 @@ Console Output
 22:37:22.777 [main] INFO org.example.rxbasic.MapMain - 5
 ```
 
-[FilterMain.java](src\main\java\org\example\rxbasic\FilterMain.java)  
+[FilterMain.java](src\main\java\org\example\rxbasic\FilterMain.java) 
 Filter: length greater than 5.
 ```java
 Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
@@ -75,7 +75,18 @@ Console Output
 
 # rx-observable
 
-ObservableCreator (Observable.create) Console Output
+[ObservableCreator.java](src/main/java/org/example/rxobservable/ObservableCreator.java) 
+```java
+Observable<String> fruits = Observable.create(source -> {
+  source.onNext("strawberry");
+  source.onNext("orange");
+  source.onNext("apple");
+  source.onComplete();
+  });
+
+fruits.subscribe(f -> logger.info("item: {}", f));
+```
+Console Output
 ```
 23:32:03.256 [main] INFO org.example.rxobservable.ObservableCreator - item: strawberry
 23:32:03.263 [main] INFO org.example.rxobservable.ObservableCreator - item: orange
