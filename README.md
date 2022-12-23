@@ -1,14 +1,15 @@
 # rx-basic
 
-Main Console Output
+This example uses a list of fruits:  
+:strawberry: :orange: :green_apple:
 
-(Main.java)[src/main/java/org/example/rxbasic/Main.java]
+[Main.java](src/main/java/org/example/rxbasic/Main.java)
 ```java
 Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
 fruits.subscribe(logger::info);
 ```
-:strawberry: :orange: :green_apple:
 
+Main Console Output
 
 ```
 22:27:12.496 [main] INFO org.example.rxbasic.Main - strawberry
