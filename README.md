@@ -1,26 +1,68 @@
 # rx-basic
 
-Main Console Output
+This example uses a list of fruits:  
+:strawberry: :orange: :green_apple:
+
+[Main.java](src/main/java/org/example/rxbasic/Main.java)
+```java
+Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
+fruits.subscribe(logger::info);
+```
+
+Console Output
+
 ```
 22:27:12.496 [main] INFO org.example.rxbasic.Main - strawberry
 22:27:12.500 [main] INFO org.example.rxbasic.Main - orange
 22:27:12.500 [main] INFO org.example.rxbasic.Main - apple
 ```
 
-MapMain (length of each element) Console Output
+[MapMain.java](src\main\java\org\example\rxbasic\MapMain.java) 
+Length of each element.  
+```java
+Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
+    
+fruits
+  .map(String::length)
+  .subscribe(length -> logger.info("{}", length));
+```
+Console Output
 ```
 22:37:22.771 [main] INFO org.example.rxbasic.MapMain - 10
 22:37:22.777 [main] INFO org.example.rxbasic.MapMain - 6
 22:37:22.777 [main] INFO org.example.rxbasic.MapMain - 5
 ```
 
-FilterMain (length greater than 5)
+[FilterMain.java](src\main\java\org\example\rxbasic\FilterMain.java) 
+Filter: length greater than 5.
+```java
+Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
+    
+  fruits
+    .map(String::length)
+    .filter(length -> length > 5)
+    .subscribe(length -> logger.info("{}", length));
+
+```
+
+Console Output
 ```
 23:47:35.705 [main] INFO org.example.rxbasic.FilterMain - 10
 23:47:35.709 [main] INFO org.example.rxbasic.FilterMain - 6
 ```
 
-IntervalMain (interval with 5sec of sleep) Console Output
+[IntervalMain.java](src\main\java\org\example\rxbasic\IntervalMain.java) 
+Interval with 5 sec of sleep. 
+```java
+logger.info("Start interval");
+    
+Observable<Long> numbers = Observable.interval(1, TimeUnit.SECONDS);
+numbers.subscribe(n -> logger.info("{}", n));
+   
+SleepUtils.sleep(5000);  
+logger.info("End interval");
+```
+Console Output
 ```
 23:05:15.145 [main] INFO org.example.rxbasic.IntervalMain - Start interval
 23:05:16.297 [RxComputationThreadPool-1] INFO org.example.rxbasic.IntervalMain - 0
@@ -33,14 +75,47 @@ IntervalMain (interval with 5sec of sleep) Console Output
 
 # rx-observable
 
-ObservableCreator (Observable.create) Console Output
+[ObservableCreator.java](src/main/java/org/example/rxobservable/ObservableCreator.java) 
+```java
+Observable<String> fruits = Observable.create(source -> {
+  source.onNext("strawberry");
+  source.onNext("orange");
+  source.onNext("apple");
+  source.onComplete();
+  });
+
+fruits.subscribe(f -> logger.info("item: {}", f));
+```
+Console Output
 ```
 23:32:03.256 [main] INFO org.example.rxobservable.ObservableCreator - item: strawberry
 23:32:03.263 [main] INFO org.example.rxobservable.ObservableCreator - item: orange
 23:32:03.263 [main] INFO org.example.rxobservable.ObservableCreator - item: apple
 ```
 
-OnNextAndOnError
+
+[OnNextAndOnError.java](src/main/java/org/example/rxobservable/OnNextAndOnError.java)  
+:strawberry: :orange: :green_apple: :x: :peach: 
+```java
+Observable<String> fruits = Observable.create(source -> {
+  try {
+    source.onNext("strawberry");
+    source.onNext("orange");
+    source.onNext("apple".substring(7));
+    source.onNext("peach");
+    source.onComplete();
+  } catch (Exception e) {
+    source.onError(e);
+  }
+     
+});
+    
+fruits.subscribe(
+  f -> logger.info("item: {}", f),
+  e -> logger.error("exception:", e)
+);
+```
+
 ```
 22:49:58.896 [main] INFO org.example.rxobservable.OnNextAndOnError - item: strawberry
 22:49:58.900 [main] INFO org.example.rxobservable.OnNextAndOnError - item: orange
@@ -56,6 +131,18 @@ java.lang.StringIndexOutOfBoundsException: String index out of range: -2
 ```
 
 FromIterableMain
+[FromIterableMain.java](src/main/java/org/example/rxobservable/FromIterableMain.java)  
+`Observable.fromIterable`
+```java
+List<String> fruits = List.of("strawberry", "orange", "apple");
+  
+Observable<String> observable = Observable.fromIterable(fruits);
+    
+observable
+  .map(fruit -> fruit.toUpperCase())
+  .filter(fruit -> fruit.length() > 5)
+  .subscribe(logger::info);
+```
 ```
 23:04:40.276 [main] INFO org.example.rxobservable.FromIterableMain - STRAWBERRY
 23:04:40.279 [main] INFO org.example.rxobservable.FromIterableMain - ORANGE
@@ -63,7 +150,16 @@ FromIterableMain
 
 # rx-observer
 
-ObserverMain
+[ObserverMain](src/main/java/org/example/rxobserver/ObserverMain.java)  
+[ObserverInteger](src/main/java/org/example/rxobserver/ObserverInteger.java) This is an observer
+```java
+Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
+    
+fruits
+  .map(fruit -> fruit.length())
+  .subscribe(new ObserverInteger());
+```
+
 ```
 23:34:45.334 [main] INFO org.example.rxobserver.ObserverInteger - item: 10
 23:34:45.339 [main] INFO org.example.rxobserver.ObserverInteger - item: 6
