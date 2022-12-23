@@ -131,6 +131,18 @@ java.lang.StringIndexOutOfBoundsException: String index out of range: -2
 ```
 
 FromIterableMain
+[FromIterableMain.java](src/main/java/org/example/rxobservable/FromIterableMain.java) 
+Observable.fromIterable
+```java
+List<String> fruits = List.of("strawberry", "orange", "apple");
+  
+Observable<String> observable = Observable.fromIterable(fruits);
+    
+observable
+  .map(fruit -> fruit.toUpperCase())
+  .filter(fruit -> fruit.length() > 5)
+  .subscribe(logger::info);
+```
 ```
 23:04:40.276 [main] INFO org.example.rxobservable.FromIterableMain - STRAWBERRY
 23:04:40.279 [main] INFO org.example.rxobservable.FromIterableMain - ORANGE
@@ -138,7 +150,16 @@ FromIterableMain
 
 # rx-observer
 
-ObserverMain
+[ObserverMain](src/main/java/org/example/rxobserver/ObserverMain.java)  
+[ObserverInteger](src/main/java/org/example/rxobserver/ObserverInteger.java) This is an observer
+```java
+Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
+    
+fruits
+  .map(fruit -> fruit.length())
+  .subscribe(new ObserverInteger());
+```
+
 ```
 23:34:45.334 [main] INFO org.example.rxobserver.ObserverInteger - item: 10
 23:34:45.339 [main] INFO org.example.rxobserver.ObserverInteger - item: 6
