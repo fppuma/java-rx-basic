@@ -2,6 +2,11 @@
 
 Main Console Output
 
+(Main.java)[src/main/java/org/example/rxbasic/Main.java]
+```java
+Observable<String> fruits = Observable.just("strawberry", "orange", "apple");
+fruits.subscribe(logger::info);
+```
 :strawberry: :orange: :green_apple:
 
 
